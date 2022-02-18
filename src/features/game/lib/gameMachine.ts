@@ -102,11 +102,11 @@ export type MachineInterpreter = Interpreter<
 
 export function startGame(authContext: AuthContext) {
   const handleInitialState = () => {
-    if (window.localStorage.getItem("tourStatus") !== "done") {
-      return "touring";
-    }
     if (authContext.sessionId || !authContext.address) {
       return "playing";
+    }
+    if (window.localStorage.getItem("tourStatus") !== "done") {
+      return "touring";
     }
     return "readonly";
   };
